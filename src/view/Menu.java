@@ -4,7 +4,7 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
-import classes.Cliente;
+import classes.*;
 
 public class Menu {
 
@@ -85,7 +85,7 @@ public class Menu {
 	    Cliente cliente = Cliente.findByCpf(cpfClientePesquisa);
 	    
 	    if (cliente != null) {
-	    	if(cliente.delete() == -1)
+	    	if(cliente.delete() == 1)
 				JOptionPane.showMessageDialog(null, "Erro ao remover cliente!");
 			else
 				JOptionPane.showMessageDialog(null, "Cliente removido com sucesso!");	
@@ -100,13 +100,13 @@ public class Menu {
 	}
 	
 	public static void listarClientes() {
-		List<Cliente> listaClientes = Cliente.listAll();
+		MinhaGen<Cliente> listaClientes = Cliente.listAll();
 		try {
-	    if (!listaClientes.isEmpty()) {
+	    if (!listaClientes.estaVazia()) {
 	        StringBuilder mensagem = new StringBuilder();
 	        mensagem.append("Lista de todos os Clientes:\n");
-	        mensagem.append("Total de clientes: ").append(Cliente.getTotal()).append("\n");
-	        for (Cliente cliente : listaClientes) {
+	        mensagem.append("Total de clientes: ").append(listaClientes.getSize()).append("\n");
+	        for (Cliente cliente : listaClientes.getLista()) {
 	        	mensagem.append("ID: ").append(cliente.getIdCliente()).append("\n");
 	            mensagem.append("Nome: ").append(cliente.getNome()).append("\n");
 	            mensagem.append("CPF: ").append(cliente.getCpf()).append("\n");

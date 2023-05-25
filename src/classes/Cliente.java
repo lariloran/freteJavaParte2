@@ -80,7 +80,7 @@ public void setIdCliente(int idCliente) {
 public int insert() {
 	return new ClienteDAO().insert(this);
 }
-public static List<Cliente> listAll(){
+public static MinhaGen<Cliente> listAll(){
 	return new ClienteDAO().listAll();
 }
 public int update(){

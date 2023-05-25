@@ -3,7 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.*;
 
-import classes.Cliente;
+import classes.*;
 
 public class ClienteDAO implements GenericDAO<Cliente> {
 
@@ -64,8 +64,8 @@ public class ClienteDAO implements GenericDAO<Cliente> {
 	}
 
 	@Override
-	public List<Cliente> listAll() {
-		List<Cliente> lista = new LinkedList<>();
+	public MinhaGen<Cliente> listAll() {
+		MinhaGen<Cliente> lista = new MinhaGen<>();
 
 		try(Connection connection = new ConnectionFactory().getConnection();
 				PreparedStatement stmt = 
@@ -78,7 +78,7 @@ public class ClienteDAO implements GenericDAO<Cliente> {
 				String telefone = rs.getString("telefone");
 				String cpf = rs.getString("cpf");
 		
-				lista.add(new Cliente(idcliente, nome, endereco, telefone,cpf));
+				lista.inserir(new Cliente(idcliente, nome, endereco, telefone,cpf));
 			}
 			return lista;
 		}catch(SQLException e){ System.out.println("Excessao SQL - listAll Cliente");

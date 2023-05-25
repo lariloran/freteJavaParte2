@@ -10,7 +10,6 @@ public class MinhaGen<T> {
 	        lista = new ArrayList<>();
 	    }
 
-	    // Métodos para manipular a lista
 	    public void inserir(T obj) {
 	        lista.add(obj);
 	    }
@@ -25,6 +24,10 @@ public class MinhaGen<T> {
 
 	    public List<T> getLista() {
 	        return lista;
+	    }
+
+	    public int getSize() {
+	        return lista.size();
 	    }
 
 		@Override
